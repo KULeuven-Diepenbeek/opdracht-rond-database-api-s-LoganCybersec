@@ -1,4 +1,4 @@
-package test.java.be.kuleuven;
+package be.kuleuven;
 
 import static org.junit.Assert.assertNotNull;
 

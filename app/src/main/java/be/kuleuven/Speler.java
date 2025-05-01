@@ -1,18 +1,32 @@
 package be.kuleuven;
 
-import javax.persistence.*;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-// TODO add missing decorators for JPA
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.PostLoad;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+
+@Entity
+@Table(name = "speler")
 public class Speler {
 
+  @Id
+  @Column(name = "tennisvlaanderenid")
   private int tennisvlaanderenId;
-
+  @Column(name = "naam", nullable = false)
   private String naam;
-
+  @Column(name = "punten", nullable = false)
   private int punten;
 
   // For relations
@@ -79,15 +93,6 @@ public class Speler {
     this.punten = punten;
   }
 
-  // @Override
-  // public int hashCode() {
-  //   final int prime = 31;
-  //   int result = 1;
-  //   result = prime * result + tennisvlaanderenId;
-  //   result = prime * result + ((naam == null) ? 0 : naam.hashCode());
-  //   result = prime * result + punten;
-  //   return result;
-  // }
   @Override
   public int hashCode() {
     return Objects.hash(tennisvlaanderenId, naam, punten);
